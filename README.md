@@ -38,6 +38,8 @@ No installation required — just place the executable in a folder and run it.
 
 ## Usage
 
+Only tested on Windows.
+
 1. Place the executable anywhere on your system
 2. Run it — the setup wizard will guide you through all configuration options including where your images are located
 
