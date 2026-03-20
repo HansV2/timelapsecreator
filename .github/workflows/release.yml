@@ -1,8 +1,9 @@
 name: Release
 
 on:
-  release:
-    types: [published]
+  push:
+    tags:
+      - 'v*'
 
 jobs:
   build:
@@ -23,9 +24,10 @@ jobs:
       - name: Build with Maven
         run: mvn package
 
-      - name: Upload release assets
+      - name: Create release and upload assets
         uses: softprops/action-gh-release@v2
         with:
+          draft: false
           files: |
             target/timelapsecreator.exe
             target/timelapsecreator-linux
