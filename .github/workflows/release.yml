@@ -23,32 +23,10 @@ jobs:
       - name: Build with Maven
         run: mvn package
 
-      - name: Upload Windows executable
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Upload release assets
+        uses: softprops/action-gh-release@v2
         with:
-          upload_url: ${{ github.event.release.upload_url }}
-          asset_path: target/timelapsecreator.exe
-          asset_name: timelapsecreator.exe
-          asset_content_type: application/octet-stream
-
-      - name: Upload Linux executable
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ github.event.release.upload_url }}
-          asset_path: target/timelapsecreator-linux
-          asset_name: timelapsecreator-linux
-          asset_content_type: application/octet-stream
-
-      - name: Upload macOS executable
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ github.event.release.upload_url }}
-          asset_path: target/timelapsecreator-mac.command
-          asset_name: timelapsecreator-mac.command
-          asset_content_type: application/octet-stream
+          files: |
+            target/timelapsecreator.exe
+            target/timelapsecreator-linux
+            target/timelapsecreator-mac.command
